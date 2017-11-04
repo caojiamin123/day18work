@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>work14运动1</title>
+		<style type="text/css">
+			#div{
+				width: 100px;
+	            height: 100px;
+	            background: red;
+	            position: absolute;
+	            left: 0;
+	            top:50px;
+				}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<div id="div"></div>
+	</body>
+	<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload=function () {
+			var obtn=document.getElementById('btn');
+            var odiv=document.getElementById('div');
+            
+             obtn.onclick = function(){
+//                move(odiv,{width: 300,height: 400});
+				  move(odiv,{width: 300,height: 400},{time:2000,easeing:'ease-in',fn:function(){
+                    move(odiv,{opacity: 0});
+                }});
+
+
+            }
+
+       }
+	</script>
+</html>

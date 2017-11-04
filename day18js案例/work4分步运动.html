@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>work4分步运动</title>
+		<style type="text/css">
+			div{
+				width: 40px;
+	            height: 40px;
+	            background: red;
+	            line-height: 40px;
+	            text-align: center;
+	            border-radius: 50%;
+	            float: left;
+	            margin: 5px;
+	            color: #fff;
+	            opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+	<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var str="的时候回出错,会认为括号没写完,的时候回出错,会认为括号没写完,的时候回出错,会认为括号没写完,的时候回出错,会认为括号没写完,的时候回出错完,解决方法是";
+			for(var i=0;i<str.length;i++){
+				var odiv=document.createElement("div");
+				odiv.innerHTML=str.charAt(i);
+				document.body.appendChild(odiv);
+			}
+			
+			var inow=0;
+			var adiv=document.getElementsByTagName("div");
+			var timer1=null;
+			timer1=setInterval(function(){
+				move(adiv[inow],{opacity:1});
+				inow++;
+				if(inow==str.length){
+					clearInterval(timer1);
+				}
+			},30)
+		}
+	</script>
+</html>

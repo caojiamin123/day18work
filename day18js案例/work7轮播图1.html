@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>work7轮播图1</title>
+		<style type="text/css">
+			*{
+				 margin: 0;
+	            padding: 0;
+	            list-style: none;
+			}
+			#wrap {
+	            width: 590px;
+	            height: 340px;
+	            margin: 50px auto;
+	            border: #000 1px solid;
+	            overflow: hidden;
+	            position: relative;
+	        }
+	        #wrap a {
+	            display: block;
+	            width: 50px;
+	            height: 30px;
+	            background: #000;
+	            opacity: .5;
+	            color: #fff;
+	            line-height: 30px;
+	            text-align: center;
+	            position: absolute;
+	            top: 50%;
+	            margin-top: -15px;
+	            text-decoration: none;
+	            font-weight: 900;
+	            font-size: 24px;
+	            z-index: 990;
+	        }
+	        #prev {
+	            left: 0;
+	        }
+	
+	        #next{
+	            right: 0;
+	        }
+	        #btn {
+	            position: absolute;
+	            left: 50%;
+	            bottom: 10px;
+	            width: 130px;
+	            margin-left: -65px;
+	            z-index: 999;
+	        }
+	        #btn li {
+	            width: 20px;
+	            height: 20px;
+	            float: left;
+	            margin-left: 6px;
+	            border-radius: 50%;
+	            background: #c00;
+	        }
+	        #btn li.active{
+	        	background:#ccc;
+	        }
+	        #box {
+	            height: 340px;
+	            position: absolute;
+	        }
+	        #box li {
+	            width: 590px;
+	            height: 340px;
+	            float: left;
+	        }
+	
+	        #box img {
+	            width: 590px;
+	            height: 340px;
+	        }
+
+
+
+	        
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<a href="javascript:;" id="prev">←</a>
+			<a href="javascript:;" id="next">→</a>
+			
+			<ul id="box">
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+				<li><img src="img/4.jpg" alt="" /></li>
+				<li><img src="img/5.jpg" alt="" /></li>
+			</ul>
+			
+			<ol id="btn">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+		</div>
+		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				var owrap=document.getElementById('wrap');
+	            var obox=document.getElementById('box');
+	            var obtn=document.getElementById('btn');
+	            var abtn=obtn.children;
+	            var ali=obox.children;
+	            var oprev=document.getElementById('prev');
+	            var onext=document.getElementById('next');
+	            var inow=0;
+	            
+	            obox.style.width=ali[0].offsetWidth*ali.length+"px";
+	            
+	            for(var i=0;i<abtn.length;i++){
+	            	abtn[i].index=i;
+	            	abtn[i].onclick=function(){
+	            		inow=this.index;
+	            		tab();
+	            	}
+	            }
+	            
+	            function tab(){
+	            	for(var i=0;i<ali.length;i++){
+	            		abtn[i].className="";
+	            	}
+	            	abtn[inow].className="active";
+	            	move(obox,{left:-ali[0].offsetWidth*inow});
+	            }
+	            
+	            oprev.onclick=function(){
+	            	inow--;
+	            	if(inow==-1)inow=abtn.length-1;
+	            	tab();
+	            }
+	            
+			}
+		</script>
+	</body>
+</html>
